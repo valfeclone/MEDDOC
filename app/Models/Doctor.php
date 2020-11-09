@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\Admin as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Admin extends Authenticatable
+class Doctor extends Authenticatable
 {
     use HasApiTokens;
     use HasFactory;
@@ -23,9 +21,11 @@ class Admin extends Authenticatable
      */
     protected $fillable = [
         'dokter_name',
+        'dokter_phone',
         'path_izin_praktik',
         'status_izin_praktik',
         'dokter_email',
+        'password',
     ];
 
     /**
@@ -41,21 +41,12 @@ class Admin extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
-    /**
      * Search query in multiple whereOr
      */
     public static function search($query)
     {
         return empty($query) ? static::query()
-            : static::where('name', 'like', '%'.$query.'%')
-                ->orWhere('email', 'like', '%'.$query.'%');
+            : static::where('dokter_name', 'like', '%'.$query.'%')
+                ->orWhere('dokter_email', 'like', '%'.$query.'%');
     }
 }

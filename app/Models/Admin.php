@@ -22,7 +22,8 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'admin_email'
+        'admin_email',
+        'password'
     ];
 
     /**
@@ -35,15 +36,6 @@ class Admin extends Authenticatable
         'remember_token',
         'two_factor_recovery_codes',
         'two_factor_secret',
-    ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
     ];
 
     /**
