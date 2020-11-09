@@ -24,14 +24,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
-        'universitas',
-        'kategori_lomba',
-        'lomba',
-        'path_bukti_bayar',
-        'path_file_lomba',
-        'email',
-        'password',
+        'user_name',
+        'user_phone',
+        'user_alamat',
+        'user_email',
     ];
 
     /**
