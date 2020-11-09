@@ -18,8 +18,8 @@ class CreateInvoicesTable extends Migration
             $table->date('date_invocie');
             $table->string('dokter_phone');
             $table->enum('invoice_status', ['belum diambil', 'diambil', 'selesai', 'batal']);
-            $table->foreignId('user_id')->nullable();    
-            $table->foreignId('dokter_id')->nullable();        
+            $table->foreignId('user_id')->references('user_id')->on('users');    
+            $table->foreignId('dokter_id')->references('dokter_id')->on('dokter');       
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateInvoicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('invoice');
     }
 }
