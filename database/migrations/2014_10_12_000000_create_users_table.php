@@ -14,19 +14,14 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('universitas');
-            $table->enum('kategori_lomba', ['Arjuna', 'Kresna', 'Prahasta', 'Nakula', 'Sadewa']);
-            $table->enum('lomba', ['Homeless Media', 'Comic Strip', 'Podcast', 'Film Fiksi', 'Movie Scoring', 'Film Dokumenter', 'Penulisan Naskah', 'PR Campaign', 'Press Conference', 'Risk Management', 'Riset Strategis Akademik', 'Fun Research', 'Social Media Activation', 'Unconventional Media', 'Brandbook', 'Skip Ad']);
-            $table->string('path_bukti_bayar')->nullable();
-            $table->string('path_file_lomba')->nullable();
-            $table->boolean('validasi_pembayaran')->default(false);
-            $table->string('email')->unique();
+            $table->id('user_id');
+            $table->string('user_name');
+            $table->string('user_phone');
+            $table->string('alamat');
+            $table->string('email_user')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
-            $table->foreignId('ketua_id')->nullable();            
+            $table->rememberToken();          
             //yang bawah ini ga gw apus gara gara tar ribet errornya
             $table->foreignId('current_team_id')->nullable();
             $table->text('profile_photo_path')->nullable();

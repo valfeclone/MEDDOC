@@ -13,20 +13,13 @@ class CreateInvoicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('invoice', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('universitas');
-            $table->enum('kategori_lomba', ['Arjuna', 'Kresna', 'Prahasta', 'Nakula', 'Sadewa']);
-            $table->enum('lomba', ['Homeless Media', 'Comic Strip', 'Podcast', 'Film Fiksi', 'Movie Scoring', 'Film Dokumenter', 'Penulisan Naskah', 'PR Campaign', 'Press Conference', 'Risk Management', 'Riset Strategis Akademik', 'Fun Research', 'Social Media Activation', 'Unconventional Media', 'Brandbook', 'Skip Ad']);
-            $table->string('path_bukti_bayar')->nullable();
-            $table->string('path_file_lomba')->nullable();
-            $table->boolean('validasi_pembayaran')->default(false);
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->foreignId('ketua_id')->nullable();            
+            $table->date('date_invocie');
+            $table->string('dokter_phone');
+            $table->enum('invoice_status', ['bayar', 'belum bayar']);
+            $table->foreignId('user_id')->nullable();    
+            $table->foreignId('dokter_id')->nullable();        
             //yang bawah ini ga gw apus gara gara tar ribet errornya
             $table->foreignId('current_team_id')->nullable();
             $table->text('profile_photo_path')->nullable();
