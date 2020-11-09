@@ -16,13 +16,8 @@ class CreateAdminsTable extends Migration
         Schema::create('admin', function (Blueprint $table) {
             $table->id('admin_id');
             $table->string('email_admin')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();        
-            //yang bawah ini ga gw apus gara gara tar ribet errornya
-            $table->foreignId('current_team_id')->nullable();
-            $table->text('profile_photo_path')->nullable();
-            //yang atas ga gw apus gr gr ribet
             $table->timestamps();
         });
     }

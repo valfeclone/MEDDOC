@@ -17,13 +17,9 @@ class CreateInvoicesTable extends Migration
             $table->id();
             $table->date('date_invocie');
             $table->string('dokter_phone');
-            $table->enum('invoice_status', ['bayar', 'belum bayar']);
+            $table->enum('invoice_status', ['belum diambil', 'diambil', 'selesai', 'batal']);
             $table->foreignId('user_id')->nullable();    
             $table->foreignId('dokter_id')->nullable();        
-            //yang bawah ini ga gw apus gara gara tar ribet errornya
-            $table->foreignId('current_team_id')->nullable();
-            $table->text('profile_photo_path')->nullable();
-            //yang atas ga gw apus gr gr ribet
             $table->timestamps();
         });
     }
