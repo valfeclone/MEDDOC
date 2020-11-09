@@ -17,15 +17,10 @@ class CreateUsersTable extends Migration
             $table->id('user_id');
             $table->string('user_name');
             $table->string('user_phone');
-            $table->string('alamat');
-            $table->string('email_user')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('user_alamat');
+            $table->string('user_email')->unique();
             $table->string('password');
             $table->rememberToken();          
-            //yang bawah ini ga gw apus gara gara tar ribet errornya
-            $table->foreignId('current_team_id')->nullable();
-            $table->text('profile_photo_path')->nullable();
-            //yang atas ga gw apus gr gr ribet
             $table->timestamps();
         });
     }

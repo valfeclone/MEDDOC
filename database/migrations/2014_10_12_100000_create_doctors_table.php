@@ -19,14 +19,9 @@ class CreateDoctorsTable extends Migration
             $table->string('dokter_phone');
             $table->string('path_izin_praktik');
             $table->boolean('status_izin_praktek')->default(false);
-            $table->string('email_dokter')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('dokter_email')->unique();
             $table->string('password');
             $table->rememberToken();           
-            //yang bawah ini ga gw apus gara gara tar ribet errornya
-            $table->foreignId('current_team_id')->nullable();
-            $table->text('profile_photo_path')->nullable();
-            //yang atas ga gw apus gr gr ribet
             $table->timestamps();
         });
     }
