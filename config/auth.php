@@ -52,6 +52,11 @@ return [
             'provider' => 'admins',
         ],
 
+        'dokter' => [
+            'driver' => 'session',
+            'provider' => 'dokter',
+        ],
+
     ],
 
     /*
@@ -82,10 +87,10 @@ return [
             'model' => App\Models\Admin::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'dokter' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Doctor::class,
+        ],
     ],
 
     /*
